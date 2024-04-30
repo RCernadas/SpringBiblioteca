@@ -1,5 +1,10 @@
 package com.spring.biblioteca.service;
 
-public class DocumentoService {
+import org.springframework.stereotype.Service;
 
+@Service
+public class DocumentoService {
+	public static int calcularTotalEjemplares() {
+		return 0;
+	}
 }

@@ -1,9 +1,28 @@
 package com.spring.biblioteca.model;
 
-public abstract class Documento implements DocumentoInterfaz {
+import com.spring.biblioteca.service.DocumentoService;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Entity
+@Table(name="documento")
+public abstract class Documento {
+	
+	@Id
+	@Column(name = "id_documento")
 	private String idDocumento;
+	
+	@Column(name = "id_titulo")
 	private String titulo;
+	
+	@Column(name = "is_disponible")
 	private boolean isDisponible;
+	
+	@Column(name = "total_ejemplares")
 	private int totalEjemplares;
 	
 	
@@ -13,18 +32,12 @@ public abstract class Documento implements DocumentoInterfaz {
 		this.idDocumento = idDocumento;
 		this.titulo = titulo;
 		this.isDisponible = isDisponible;
-		this.totalEjemplares = calcularTotalEjemplares();
+		this.totalEjemplares = DocumentoService.calcularTotalEjemplares();
 	}
 
 	public Documento() {
 		super();
 	}
-
-
-
-	@Override
-	public abstract int calcularTotalEjemplares();
-	
 	
 	public String getIdDocumento() {
 		return idDocumento;
